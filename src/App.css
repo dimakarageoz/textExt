@@ -1,0 +1,16 @@
+.nav-pane{
+    background-color: rgba(0, 0, 0, 0.84);
+    padding-bottom: 10px;
+    height: 962px;
+}
+.nav-pane a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    padding-bottom: 5px;
+    font-size: 2rem;
+    border-bottom: solid 1px #ffffff;
+}
+.content {
+    font-size: 2.5rem;
+}
