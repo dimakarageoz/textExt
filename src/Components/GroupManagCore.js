@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import getData from './Api';
+import { getData }  from './Api';
+import { sendData } from './Api';
 
 class Group extends Component {
     render () {
@@ -30,19 +31,33 @@ class GroupList extends Component{
 class AddGroup extends Component{
 
     state = {
+       id: Date.now(),
        text: ''
     };
+
     handleTextChange = (event) => {
         this.setState({text: event.target.value});
     };
     handleGroupsAdd = () => {
+        console.log("Я сработал!");
+
         let newGroup = {
             id: Date.now(),
             name: this.state.text
         };
+
         this.props.onGroupAdd(newGroup);
+
+        sendData.sendGroup(newGroup).then((res) => {
+            this.setState({
+                id: Date.now(),
+                name: res
+            })
+        });
+
         this.setState({text: ''});
     };
+
     render () {
         return (<div>
             <input className="input"
