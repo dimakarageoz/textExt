@@ -1,7 +1,6 @@
-/**
- * Created by student on 1/19/17.
- */
 import React, {Component} from 'react';
+import { getData }  from './Api';
+import { sendData } from './Api';
 
 class Group extends Component {
     render () {
@@ -15,13 +14,15 @@ class Group extends Component {
 
 class GroupList extends Component{
     render () {
+
         var deleteGroup = this.props.onGroupDelete;
         return (
             <div className="group-list">
                 {
-                    this.props.group.map(function (group) {
-                        return <Group key = {group.id} onDelete = {deleteGroup.bind(null, group)}>{group.name}</Group>;
+                    this.props.group.map(function (group, index) {
+                        return <Group key={index} onDelete={deleteGroup.bind(null, group)}>{group.name}</Group>;
                     })
+
                 }
             </div>);
     }
@@ -30,67 +31,82 @@ class GroupList extends Component{
 class AddGroup extends Component{
 
     state = {
+       id: Date.now(),
        text: ''
     };
+
     handleTextChange = (event) => {
         this.setState({text: event.target.value});
     };
     handleGroupsAdd = () => {
+        console.log("Я сработал!");
+
         let newGroup = {
             id: Date.now(),
             name: this.state.text
         };
+
         this.props.onGroupAdd(newGroup);
+
+        sendData.sendGroup(newGroup).then((res) => {
+            this.setState({
+                id: Date.now(),
+                name: res
+            })
+        });
+
         this.setState({text: ''});
     };
+
     render () {
         return (<div>
             <input className="input"
                    type="text"
                    placeholder="Введите название группы"
                    value={this.state.text}
-                   onChange = {this.handleTextChange}/>
-            <button className="btn btn-info" onClick = {this.handleGroupsAdd}>Создать</button>
+                   onChange={this.handleTextChange}/>
+            <button className="btn btn-info" onClick={this.handleGroupsAdd}>Создать</button>
         </div>);
     }
 }
 
 class GroupListApp extends Component{
     state = {
+            id: '',
             group: []
     };
-    componentDidMount() {
-        var localGroups = JSON.parse(localStorage.getItem('group'));
-        if(localGroups) {
-            this.setState({group: localGroups});
-        }
+
+    componentWillMount(){
+        getData.getGroups().then((res) => {
+            this.setState({
+                id: Date.now(),
+                group: res
+            })
+        })
+
     }
-    componentDidUpdate() {
-        this._updateLocalStorage();
-    }
+
     handleDeleteGroup = (groups) =>{
         var groupId = groups.id;
         var newGroups = this.state.group.filter(function (groups) {
-            return groups.id != groupId;
+            return groups.id !== groupId;
         });
         this.setState({group: newGroups})
-    }
+    };
     handleGroupAdd = (newGroup) => {
         var newGroups = this.state.group.slice();
         newGroups.unshift(newGroup);
         this.setState({group: newGroups});
     };
     render() {
+        console.log(this.state.group);
+
         return (
             <section className="app-grouplist">
                 <h1>Trip Navigator</h1>
-                <AddGroup onGroupAdd = {this.handleGroupAdd}/>
-                <GroupList group = {this.state.group} onGroupDelete = {this.handleDeleteGroup}/>
+                <AddGroup onGroupAdd={this.handleGroupAdd}/>
+                <GroupList group={this.state.group} onGroupDelete={this.handleDeleteGroup}/>
             </section>);
-    }
-    _updateLocalStorage () {
-        var group = JSON.stringify(this.state.group);
-        localStorage.setItem('group', group)
     }
 }
 export default GroupListApp;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import './App.css';
 
 class App extends Component {
@@ -7,13 +7,14 @@ class App extends Component {
     return (
         <div>
             <div className="nav-pane col-md-3">
-                    <Link to = "/my-groups">Мои группы</Link>
-                    <Link to = "/groups-management">Управление группами</Link>
-                    <Link to = "/trips-management">Управление маршрутами</Link>
-                    <Link to = "/users-management">Управление участниками</Link>
-                    <Link to = "/payment">Оплата</Link>
+                    <Link to="/my-groups">Мои группы</Link>
+                    <Link to="/groups-management">Управление группами</Link>
+                    <Link to="/trips-management">Управление маршрутами</Link>
+                    <Link to="/users-management">Управление участниками</Link>
+                    <Link to="/payment">Оплата</Link>
             </div>
-            <div className="content col-md-9">{this.props.children}</div>
+            <div className="content col-md-9">{this.props.children}
+            </div>
         </div>);
   }
 }

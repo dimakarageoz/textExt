@@ -1,6 +1,4 @@
-/**
- * Created by student on 1/19/17.
- */
+
 import React, {Component} from 'react';
 import GroupAddList from './GroupManagCore';
 
