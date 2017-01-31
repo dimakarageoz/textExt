@@ -9,14 +9,16 @@ import Payment from './Components/Payment';
 import { Router, Route, hashHistory } from 'react-router';
 
 ReactDOM.render(
-    <Router history = {hashHistory}>
-        <Route path = '/' component = {App}>
-            <Route path = '/payment' component = { Payment } />
-            <Route path = '/trips-management' component = { TripsManagement } />
-            <Route path = '/users-management' component = { UserManagement } />
-            <Route path = '/groups-management' component = { GroupsManagement } />
-            <Route path = '/my-groups' component = { GroupsPage } />
+    <Router history={hashHistory}>
+        <Route path='/' component={App}>
+            <Route path='/payment' component={ Payment } />
+            <Route path='/trips-management' component={ TripsManagement } />
+            <Route path='/users-management' component={ UserManagement } />
+            <Route path='/groups-management' component={ GroupsManagement } />
+            <Route path='/my-groups' component={ GroupsPage } />
         </Route>
+
     </Router>,
+
   document.getElementById('root')
 );
