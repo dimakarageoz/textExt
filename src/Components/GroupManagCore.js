@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { getData }  from './Api';
 import { sendData } from './Api';
+import { deleteData } from './Api';
 
 class Group extends Component {
     render () {
@@ -14,7 +15,6 @@ class Group extends Component {
 
 class GroupList extends Component{
     render () {
-
         var deleteGroup = this.props.onGroupDelete;
         return (
             <div className="group-list">
@@ -22,7 +22,6 @@ class GroupList extends Component{
                     this.props.group.map(function (group, index) {
                         return <Group key={index} onDelete={deleteGroup.bind(null, group)}>{group.name}</Group>;
                     })
-
                 }
             </div>);
     }
@@ -31,15 +30,14 @@ class GroupList extends Component{
 class AddGroup extends Component{
 
     state = {
-       id: Date.now(),
-       text: ''
+        id: '',
+        text: ''
     };
 
     handleTextChange = (event) => {
         this.setState({text: event.target.value});
     };
     handleGroupsAdd = () => {
-        console.log("Я сработал!");
 
         let newGroup = {
             id: Date.now(),
@@ -49,6 +47,7 @@ class AddGroup extends Component{
         this.props.onGroupAdd(newGroup);
 
         sendData.sendGroup(newGroup).then((res) => {
+
             this.setState({
                 id: Date.now(),
                 name: res
@@ -72,8 +71,8 @@ class AddGroup extends Component{
 
 class GroupListApp extends Component{
     state = {
-            id: '',
-            group: []
+        id: [],
+        group: []
     };
 
     componentWillMount(){
@@ -81,17 +80,18 @@ class GroupListApp extends Component{
             this.setState({
                 id: Date.now(),
                 group: res
-            })
+            });
         })
-
     }
-
     handleDeleteGroup = (groups) =>{
-        var groupId = groups.id;
+        var groupId = groups._id;
+        console.log(groupId);
         var newGroups = this.state.group.filter(function (groups) {
-            return groups.id !== groupId;
+            return groups._id !== groupId;
         });
-        this.setState({group: newGroups})
+        deleteData.delGroup(groupId).then((res) => {
+            this.setState({group: newGroups})
+        });
     };
     handleGroupAdd = (newGroup) => {
         var newGroups = this.state.group.slice();
@@ -99,8 +99,6 @@ class GroupListApp extends Component{
         this.setState({group: newGroups});
     };
     render() {
-        console.log(this.state.group);
-
         return (
             <section className="app-grouplist">
                 <h1>Trip Navigator</h1>
