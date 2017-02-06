@@ -15,7 +15,8 @@ var sendData = {
     sendGroup(newGroup){
         return Request
             .post(url)
-            .send(newGroup);
+            .send(newGroup)
+            .then((res) => res.body);
     }
 };
 
