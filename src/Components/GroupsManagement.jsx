@@ -1,12 +1,12 @@
 
-import React, {Component} from 'react';
-import GroupAddList from './GroupManagCore';
+import React from 'react';
+import GroupListApp from './GroupsManagment/GroupListApp';
 
-class GroupsManagement extends Component {
+class GroupsManagement extends React.Component {
     render(){
         return(
             <div>Hello, this page is under development 'Groups Management'
-            <GroupAddList/>
+            <GroupListApp/>
             </div>
         );
     }
