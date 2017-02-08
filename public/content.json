@@ -1,0 +1,89 @@
+{
+"categories": [
+      {
+      "nick": "@Zloi_Russkie_Ivan1936",
+      "dropdown": []
+      },
+      {
+    "name": "Your friends",
+    "dropdown": [
+      {
+        "text": "Friend list",
+        "href": "/users-management"
+      },
+      {
+        "text": "Add new people",
+        "href": "/users-management"
+      },
+      {
+        "text": "Delete friend",
+        "href": "/users-management"
+      }
+    ]
+  },
+  {
+    "name": "Message",
+    "href": "444444",
+    "dropdown": []
+  },
+  {
+    "name": "Groups",
+    "dropdown": [
+      {
+        "text": "Your groups",
+        "href": "/groups-management"
+      },
+      {
+        "text": "Make new group",
+        "href": "/groups-management"
+      },
+      {
+        "text": "Delete group",
+        "href": "/groups-management"
+      }
+    ]
+  },
+  {
+    "name": "Trip",
+    "dropdown": [
+      {
+        "text": "Your trip",
+        "href": "/trips-management"
+      },
+      {
+        "text": "Create a new trip",
+        "href": "/trips-management"
+      }
+    ]
+  },
+  {
+    "name": "Foto",
+    "href": "10101010",
+    "dropdown": []
+  },
+  {
+    "name": "Option",
+    "dropdown": [
+      {
+        "text": "Edit details",
+        "href": "11_11_11_11"
+      },
+      {
+        "text": "Security",
+        "href": "12_12_12_12"
+      },
+      {
+        "text": "About the program",
+        "href": "13_13_13_13"
+      },
+      {
+        "text": "Cache",
+        "href": "14_14_14"
+      },
+      {
+        "text": "Assist",
+        "href": "15_15_15_15"
+      }
+    ]
+    }]
+  }

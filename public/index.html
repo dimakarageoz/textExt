@@ -4,9 +4,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+
+              body
+              {
+                   background-color: #999999;
+              }
+              .navmenu.navmenu-default.navmenu-fixed-left.offcanvas.in.canvas-slid
+              {
+                border-color:#303030;
+              }
+    </style>
     <title>React App</title>
   </head>
-  <body>
-    <div id="root"></div>
+  <nav class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+   <div	id="menu">!</div>
+  </nav>
+
+  <div class="navbar navbar-default navbar-fixed-top">
+    <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <div class="container">
+      <div	id="root">!</div>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
   </body>
 </html>
