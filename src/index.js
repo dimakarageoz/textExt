@@ -25,7 +25,3 @@ ReactDOM.render(
     </Router>,
   document.getElementById('root')
 );
-ReactDOM.render(
- <Leftbar />,
-  document.getElementById('menu')
-);
